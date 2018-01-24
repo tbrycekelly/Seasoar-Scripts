@@ -69,7 +69,7 @@ data.moogmonitor = zeros(nmax, 1);
 data.tension = zeros(nmax, 1);
 data.ctdscans = zeros(nmax * data.ctdscanrate, data.numctdbytes, 'uint8');
 
-isfull = true;
+isfull = logical(1);
 
 % read the _DAT file line by line and assign variables
 for n = 1:nmax
@@ -79,7 +79,7 @@ for n = 1:nmax
     % to 0 and the loop is exited.
     num = fread(fid, 1, 'int32');
     if isempty(num)
-        isfull = false;
+        isfull = logical(0);
         break
     end
     
@@ -111,7 +111,7 @@ end
 
 if isfull
     % test that there are no  more data in the file
-    test = fread(fid, 1, 'uchar');
+    test = fread(fid,1,'uchar');
     if ~isempty(test)
         error('Data remains in file, need to increase nmax.')
     end
@@ -130,7 +130,7 @@ else
     data.moogdrive = data.moogdrive(1:n-1);
     data.moogmonitor = data.moogmonitor(1:n-1);
     data.tension = data.tension(1:n-1);
-    data.ctdscans = data.ctdscans(1:data.ctdscanrate * (n-1),:);
+    data.ctdscans = data.ctdscans(1:data.ctdscanrate*(n-1),:);
 end
 
 fclose(fid);
