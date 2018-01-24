@@ -1,0 +1,162 @@
+#  CTD 0831 calibration file
+#  14-Jun-2011
+[GENERAL]
+# Comm Port, Baud, Data Bits, Parity, Stop Bits
+CTD_PORT = 3,19200,8,0,10
+
+# Serial NMEA is enabled only if the NMEA_UDP Port is disabled
+NMEA_PORT1 = 1,4800,8,0,10
+#NMEA_PORT2 = 0,4800,8,0,10
+#NMEA_PORT3 = 0,4800,8,0,10
+#NMEA_PORT4 = 0,4800,8,0,10
+# if the NMEA_UDP port is set to 0 or the NMEA_UDP line starts with '#' then the UDP input is disabled
+# If enabled then all GPS, Depth and heading data is expected to come in via UDP
+#NMEA_UDP_PORT = 61583
+
+# Comm Port, Baud, Data Bits, Parity, Stop Bits
+ASCOUT_PORT = 5,19200,8,0,10
+ASCOUT_INTERVAL = 1
+
+Ship=R/V Melville
+Cruise =  MV1106
+OutputFileType=5
+# OutputFileType
+# 0 - Seasoar 2
+# 1 - Seasoar 3
+# 2 - SeaBird
+#CHRT2 = FALSE
+MAXP=900.0
+FILE_ENABLE = TRUE
+FILE_NAME = FLT_DAT
+FILE_SIZE = 5000000
+FILE_WRITE_INTERVAL = 0.0
+LOG_INTERVAL=5.0
+ADVANCEC0 = 0.0
+ADVANCEC1 = 0.0
+# Deck unit type
+DUTYPE = 2
+
+# DUTYPE
+# 0 - Version 1 AsciiHex NoSurfacePar
+# 1 - Version 1 Binary   NoSurfacePar
+# 2 - Version 2 AsciiHex NoSurfacePar
+# 3 - Version 1 AsciiHex SurfacePar
+# 4 - Version 1 Binary   SurfacePar
+# 5 - Version 2 AsciiHex SurfacePar
+# 6 - Version 2 GPIB NoSurfacePar
+
+[CTD_FR]
+
+SENSOR SERIAL NUMBER: 0831
+CALIBRATION DATE: 01-NOV-2010
+Mfg: SEABIRD  Model: 09P  CTD Prs s/n: 99677
+C1= -4.346032E+4
+C2= -4.006928E-1
+C3= 1.660343E-2
+D1= 3.341599E-2
+D2= 0.000000E+0
+T1= 3.004630E+1
+T2= -4.444244E-4
+T3= 4.435306E-6
+T4= -4.321959E-9
+T5= 0.000000E+0
+AD590M= 1.28916E-2
+AD590B= -8.23481E+0
+Slope = 1.00000000E+0
+Offset = 0.00000000E+0
+#Serial number of pressure sensor
+#Calibration coefficients (c1,c2,c3,d1,d2).
+#Calibration coefficients (t1,t2,t3,t4,t5).
+#Calibration coefficients (AD590M, AD590B, Slope, Offset
+
+#Serial number : 99677
+#Calibrated on : 01-Nov-2010
+Press = 99677 -4.346032E+4 -4.006928E-1 1.660343E-2 3.341599E-2 0.000000E+0 3.004630E+1 -4.444244E-4 4.435306E-6 -4.321959E-9 0.000000E+0 1.28916E-2 -8.23481E+0 1.0 0.0
+
+#Calibration coefficients (g,h,i,j,CTcor,CPcor,slope,offset).
+#3399 C1 17-May-11 
+COND1 = 3399 -1.01385087e+001 1.53140380e+000 -1.32511671e-003 1.98828448e-004 3.2500e-6 -9.57e-8 1.0 0.0
+
+#Calibration coefficients (g,h,i,j,CTcor,CPcor,slope,offset).
+#2112 C2 14-Jan-11 
+COND2 = 2112 -1.01538190e+001 1.46991630e+000 -2.54532701e-003 2.65297585e-004 3.2500e-006 -9.5700e-008 1.0 0.0
+
+#4943 T1 s/n  Calibrated 17-May-11
+#Calibration coefficients (g,h,i,j,f0,slope,offset).
+TEMP1 = 4943 4.37944496e-003 6.40987205e-004 2.24820577e-005 2.10197734e-006 1000.0 1.0 0.0
+
+#2202 T2  Calibrated 13-Jan-11
+#Calibration coefficients (g,h,i,j,f0,slope,offset).
+TEMP2 = 2202 4.35840773E-3 6.46397760E-4 2.36920383E-5 2.27462206E-6 1000.0 1.0 0.0
+
+# Sensor types
+# 8 WingPitch
+# 10 Roll
+# 11 FishPitch
+# 12 PropRPM
+# 13 Bridal Angle
+# 15 Altimeter
+# 16 Transmissometer
+# 17 Fluorometer
+# 18 Oxygen (ML/L)
+# 19 Oxygen Sat
+# 20 PAR
+# 21 Surface PAR
+# 25 Moog Mon
+# 27 Tension Load Cell
+# 28 Water Depth
+# 34 NONE
+
+# Calibration Type
+# 0 NONE
+# 1 Offset
+# 2 Slope
+# 3 Out=(X+Offset)*Slope
+# 4 Out=(X*Slope)+Offset
+# 5 Polynomial Out=X+AX2+BX+C [2-10 coefficients]
+# 6 SBE43 Oxygen [Soc, Boc, Tcor, Pcor, Offset] (Pre 2008)
+# 7 SBE43 Oxygen [Soc, Voffset, Tau20, A, B, C, E] (Post 2008)
+# Soc = 0.3828
+#Voffset = -0.4782
+#Tau20 = 1.83
+#A = -8.3074e-04
+#B = 2.0208e-004
+#C = -3.7052e-006
+#E nominal = 0.036
+# 
+[CTD_AD]
+#    Sensor_Type, Calibration_Type, Sensor_Num, Coefficients ...
+CH1 =  8, 3, 0, 61.0, -2.5
+CH2 = 10, 3, 0, 60.0, -2.5 
+CH3 = 11, 3, 0, 60.0, -2.5
+# Pitch Bottle#1
+#CH4 = 12, 3, 0, 490.585, -0.1
+# Pitch Bottle#2
+CH4 = 12, 3, 0, 490.585, -0.062
+CH5 = 16, 3, 0, 20.0 0.0
+CH6 = 34, 0, 0, 1.0, 0.0 
+CH7 = 17, 4, 0, 3.0, 0.0 
+CH8 = 34, 0, 0, 3.0, 0.0 
+CH9 = 34, 0, 0, 1.0, 0.0 
+#
+# AUX1 WingPitch/Roll
+# AUX2 FishPitch/Prop Speed
+# AUX3 Wetlabs Cstar Transmissometer s/n CST1115DR
+# AUX4 Seapoint Fluorometer s/n 3004 using 3x # cable (0-50ug/l = 0-5 Volts)
+#
+[NIDAQ]
+Device = Dev1
+AD_Range = -5, +5
+# Moog Monitor
+CH0 = 25, 4, 0, 41.0, 2.4
+# Tension
+# Using the M/D TOTCO TL101-5K load cell
+# if 0-10Volts
+# CH1 = 27, 3, 0, 500.0, 0.0
+# if 4-20ma
+CH1 = 27, 3, 0, 1250.0, -1.03
+# Using the Interface 3210 load cell
+# if 0-10Volts
+# CH1 = 27, 3, 0, 1000.0, 0.0
+# if 4-20ma
+#CH1 = 27, 3, 0, 2500.0, -1.03

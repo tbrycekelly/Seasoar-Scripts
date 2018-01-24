@@ -1,0 +1,33 @@
+function data  =  allread(pathstr,prefix,suffix,cfg)
+%function data  =  allread(pathstr,prefix,suffix,cfg) opens and reads the
+%SeaSoar file defined by directory path pathstr, prefix prefix, and a hex
+%suffix.  The total path is then pathstr/prefix.suffix
+%CTD and engineering variables are returned with calibrations applied.
+%Data is returned in a self-explanatory structure.
+
+%D. Rudnick 03/21/05
+%added oxygen 07/30/06
+
+% Use e.g.:
+%       data  =  allread('D:\Documents\MATLAB\Seasoar\P1106','FLT_DAT','00C',cfg);
+
+
+d = rawfileread(pathstr, prefix, suffix, cfg);
+
+if ~isstruct(d)
+   data = d;
+   return
+end
+data  =  parseall(d, cfg);
+
+data.s1 = sw_salt(10 * data.c1 / sw_c3515, data.t1, data.p);
+data.s2 = sw_salt(10 * data.c2 / sw_c3515, data.t2, data.p);
+
+data.theta1 = sw_ptmp(data.s1, data.t1, data.p,0);
+data.theta2 = sw_ptmp(data.s2, data.t2, data.p,0);
+
+data.sigma1 = sw_pden(data.s1, data.t1, data.p, 0);
+data.sigma2 = sw_pden(data.s2, data.t2, data.p, 0);
+
+data.soundspeed1 = sw_svel(data.s1, data.t1, data.p);
+data.soundspeed2 = sw_svel(data.s2, data.t2, data.p);
